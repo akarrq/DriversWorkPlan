@@ -5,4 +5,6 @@ export interface IDays {
 	workingTime: number;
 	isExtraPaid: boolean;
 	workplace: string;
+	workTimeStart: string;
+	workTimeEnd: string;
 }

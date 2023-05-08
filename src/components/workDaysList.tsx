@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react';
 
 import supabase from '../supabaseClient';
 import { IDays } from '../models';
+import WorkDaysList from './itemsList';
 
-const WorkDaysList = () => {
+const GetWorkDaysList = () => {
 	const [days, setDays] = useState<IDays[] | any>([]);
 	const [loading, setLoading] = useState(true);
 
@@ -33,23 +34,7 @@ const WorkDaysList = () => {
 		}
 	};
 
-	return (
-		<>
-			{loading ? (
-				<p>loading...</p>
-			) : (
-				<ul>
-					{days.map((day: IDays) => (
-						<li key={day.id}>
-							Data: {day.date}, Czas Pracy: {day.workingTime}h, Miejsce pracy:{' '}
-							{day.workplace}, Jest dodatkowo płatna:{' '}
-							{day.isExtraPaid ? 'TAK' : 'NIE'}
-						</li>
-					))}
-				</ul>
-			)}
-		</>
-	);
+	return <>{loading ? <p>loading...</p> : <WorkDaysList days={days} />}</>;
 };
 
-export default WorkDaysList;
+export default GetWorkDaysList;

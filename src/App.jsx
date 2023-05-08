@@ -1,7 +1,7 @@
 import { Grid, Paper, Typography } from '@mui/material';
 import PrimarySearchAppBar from './components/nav';
 
-import WorkDaysList from './components/workDaysList';
+import GetWorkDaysList from './components/workDaysList';
 
 function App() {
 	return (
@@ -19,7 +19,7 @@ function App() {
 				</Grid>
 				<Grid item xs={6}>
 					<Paper>
-						<WorkDaysList />
+						<GetWorkDaysList />
 					</Paper>
 				</Grid>
 				<Grid item xs={2}></Grid>
