@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import { Typography, Grid, Paper } from '@mui/material';
 
+import GetCars from './getCars';
+
 export default function Vehicle() {
 	return (
 		<>
@@ -15,9 +17,12 @@ export default function Vehicle() {
 				>
 					<Grid item xs={4}>
 						<Typography variant="h2">Pojazd</Typography>
+						<Typography variant="h5">Zarejestruj stan licznika</Typography>
 					</Grid>
 					<Grid item xs={7}>
-						<Paper></Paper>
+						<Paper>
+							<GetCars></GetCars>
+						</Paper>
 					</Grid>
 				</Grid>
 			</>

@@ -7,7 +7,7 @@ import {
 	ListItemText,
 } from '@mui/material';
 
-import { NavContext } from '../../../contexts/nav';
+import { NavContext } from '../../contexts/nav';
 
 export default function NavItem({ navItemName, navItemIcon }) {
 	const nav = React.useContext(NavContext);

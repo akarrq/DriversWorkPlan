@@ -1,19 +1,21 @@
 import * as React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
-import Chip from '@mui/material/Chip';
+import {
+	List,
+	ListItem,
+	ListItemText,
+	ListItemAvatar,
+	Avatar,
+	Divider,
+	Typography,
+	Chip,
+} from '@mui/material';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
-import { IDays } from '../../../models';
+import { IDay } from '../../../models';
 
 export default function WorkDaysList({ days }) {
 	return (
 		<List sx={{ width: '95%', minWidth: 360, bgcolor: 'background.paper' }}>
-			{days.map((day: IDays) => (
+			{days.map((day: IDay) => (
 				<>
 					<ListItem key={day.id} alignItems="flex-start">
 						<ListItemAvatar>
@@ -52,7 +54,7 @@ export default function WorkDaysList({ days }) {
 							false
 						)}
 					</ListItem>
-					<Divider variant="inset" component="li" />
+					<Divider key={day.id + 'd'} variant="inset" component="li" />
 				</>
 			))}
 		</List>

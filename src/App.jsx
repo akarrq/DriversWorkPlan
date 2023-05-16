@@ -2,10 +2,10 @@ import * as React from 'react';
 
 import { Grid } from '@mui/material';
 
-import PrimaryAppBar from './components/sites/nav/appBar';
+import PrimaryAppBar from './components/nav/appBar';
 import Main from './components/sites/main/main';
-import NavList from './components/sites/nav/nav';
-import navReducer from './components/sites/nav/navReducer';
+import NavList from './components/nav/nav';
+import navReducer from './components/nav/navReducer';
 import { NavContext } from './contexts/nav';
 
 function App() {

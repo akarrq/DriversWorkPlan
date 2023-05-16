@@ -15,7 +15,7 @@ export default function Main() {
 				sx={{ padding: 2, height: '100vh' }}
 			>
 				<Grid item xs={4}>
-					<Typography variant="h2">Przeglądaj swoje zmiany</Typography>
+					<Typography variant="h2">Przeglądaj swoje zlecenia</Typography>
 				</Grid>
 				<Grid item xs={7}>
 					<Paper>

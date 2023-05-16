@@ -1,4 +1,4 @@
-export interface IDays {
+export interface IDay {
 	id: number;
 	created_at: string;
 	date: string;
@@ -7,4 +7,11 @@ export interface IDays {
 	workplace: string;
 	workTimeStart: string;
 	workTimeEnd: string;
+}
+
+export interface ICar {
+	created_at: string | null;
+	id: number;
+	vehicleBrand: string | null;
+	vehicleRegistrationNumber: string | null;
 }

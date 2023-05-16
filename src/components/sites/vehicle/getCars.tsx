@@ -2,11 +2,11 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 
 import supabase from '../../../supabaseClient';
-import { IDay } from '../../../models';
-import WorkDaysList from './workDayList';
+import CarCards from './carCards';
+import { ICar } from '../../../models';
 
-const GetWorkDaysList = () => {
-	const [days, setDays] = useState<IDay[] | any>([]);
+const GetCars = () => {
+	const [cars, setCars] = useState<any>();
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -16,16 +16,12 @@ const GetWorkDaysList = () => {
 	const getData = async () => {
 		try {
 			setLoading(true);
-			let {
-				data: days,
-				status,
-				error,
-			} = await supabase.from('dwp').select('*');
+			let { data, status, error } = await supabase.from('cars').select('*');
 			if (error && status !== 406) {
 				throw error;
 			}
-			if (days) {
-				setDays(days);
+			if (data) {
+				setCars(data);
 			}
 		} catch (error: any) {
 			alert(error.message);
@@ -34,7 +30,7 @@ const GetWorkDaysList = () => {
 		}
 	};
 
-	return <>{loading ? <p>loading...</p> : <WorkDaysList days={days} />}</>;
+	return <>{loading ? <p>loading...</p> : <CarCards cars={cars} />}</>;
 };
 
-export default GetWorkDaysList;
+export default GetCars;

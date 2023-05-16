@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import Main from '../main/main';
-import Availability from '../availability/availability';
-import Vehicle from '../vehicle/vehicle';
-import Incidents from '../incidents/incidents';
+import Main from '../sites/main/main';
+import Availability from '../sites/availability/availability';
+import Vehicle from '../sites/vehicle/vehicle';
+import Incidents from '../sites/incidents/incidents';
 
 export default function navReducer(state: JSX.Element, action: any) {
 	switch (action.type) {
