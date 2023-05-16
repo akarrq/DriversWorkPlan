@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 
-import supabase from '../supabaseClient';
-import { IDays } from '../models';
-import WorkDaysList from './itemsList';
+import supabase from '../../../supabaseClient';
+import { IDays } from '../../../models';
+import WorkDaysList from './workDayList';
 
 const GetWorkDaysList = () => {
 	const [days, setDays] = useState<IDays[] | any>([]);

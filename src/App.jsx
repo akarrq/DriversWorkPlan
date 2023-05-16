@@ -1,28 +1,28 @@
-import { Grid, Paper, Typography } from '@mui/material';
-import PrimarySearchAppBar from './components/nav';
+import * as React from 'react';
 
-import GetWorkDaysList from './components/workDaysList';
+import { Grid } from '@mui/material';
+
+import PrimaryAppBar from './components/sites/nav/appBar';
+import Main from './components/sites/main/main';
+import NavList from './components/sites/nav/nav';
+import navReducer from './components/sites/nav/navReducer';
+import { NavContext } from './contexts/nav';
 
 function App() {
+	const [site, dispatch] = React.useReducer(navReducer, <Main />);
+
 	return (
 		<>
-			<PrimarySearchAppBar />
-			<Grid
-				container
-				spacing={3}
-				justifyContent="center"
-				alignItems="center"
-				sx={{ padding: 2, height: '100vh' }}
-			>
-				<Grid item xs={4}>
-					<Typography variant="h1">Przeglądaj swoje zmiany</Typography>
+			<PrimaryAppBar />
+			<Grid container>
+				<Grid item xs={2}>
+					<NavContext.Provider value={dispatch}>
+						<NavList />
+					</NavContext.Provider>
 				</Grid>
-				<Grid item xs={6}>
-					<Paper>
-						<GetWorkDaysList />
-					</Paper>
+				<Grid item xs={10}>
+					{site}
 				</Grid>
-				<Grid item xs={2}></Grid>
 			</Grid>
 		</>
 	);

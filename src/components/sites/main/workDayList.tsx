@@ -8,7 +8,7 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
-import { IDays } from '../models';
+import { IDays } from '../../../models';
 
 export default function WorkDaysList({ days }) {
 	return (
@@ -25,6 +25,7 @@ export default function WorkDaysList({ days }) {
 							</Avatar>
 						</ListItemAvatar>
 						<ListItemText
+							key={day.id}
 							primary={`${new Intl.DateTimeFormat('pl-PL', {
 								weekday: 'long',
 							}).format(new Date(day.date))} ${new Date(
