@@ -8,23 +8,49 @@ import {
 	ListItemAvatar,
 	Avatar,
 	Divider,
+	Tooltip,
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 
 import { ICar } from '../../../models';
+import EditCar from './editCar';
 
 const CarCards = ({ cars }) => {
-	return (
+	const [isCarEdit, setIsCarEdit] = React.useState(false);
+	const [vehicleRegistrationNumber, setVehicleRegistrationNumber] =
+		React.useState<string>('');
+	const [vehicleBrand, setVehicleBrand] = React.useState<string>('');
+
+	return isCarEdit ? (
+		<EditCar
+			vehicleRegistrationNumber={vehicleRegistrationNumber}
+			vehicleBrand={vehicleBrand}
+			setIsCarEdit={setIsCarEdit}
+		/>
+	) : (
 		<List>
 			{cars.map((car: ICar) => (
 				<>
 					<ListItem
 						key={car.id}
 						secondaryAction={
-							<IconButton edge="end" aria-label="delete">
-								<EditIcon />
-							</IconButton>
+							<Tooltip title="Wpisz przebieg">
+								<IconButton
+									onClick={() => {
+										setVehicleRegistrationNumber(
+											car.vehicleRegistrationNumber!
+										);
+										setVehicleBrand(car.vehicleBrand!);
+										setIsCarEdit(true);
+										console.log(car.vehicleRegistrationNumber);
+									}}
+									edge="end"
+									aria-label="delete"
+								>
+									<EditIcon />
+								</IconButton>
+							</Tooltip>
 						}
 					>
 						<ListItemAvatar>

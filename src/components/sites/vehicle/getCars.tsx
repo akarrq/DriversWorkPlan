@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 
 import supabase from '../../../supabaseClient';
 import CarCards from './carCards';
-import { ICar } from '../../../models';
 
 const GetCars = () => {
 	const [cars, setCars] = useState<any>();
