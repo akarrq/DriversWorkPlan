@@ -28,12 +28,16 @@ export default function EditCar({
 		const { focused } = useFormControl() || {};
 
 		const helperText = React.useMemo(() => {
-			if (typeof vehicleMileage === 'string') {
-				return 'Przebieg musi być liczbą';
-			} else if (focused) {
+			console.log(vehicleMileage);
+			if ((focused && vehicleMileage == '') || undefined) {
 				return 'Wpisz przebieg';
+			} else if (focused && Number.isNaN(Number(vehicleMileage))) {
+				return 'Przebieg musi być liczbą';
+			} else if (focused && !Number.isNaN(Number(vehicleMileage))) {
+				return 'Zatwierdź przebieg';
+			} else if (!focused) {
+				return ' ';
 			}
-
 			return ' ';
 		}, [focused]);
 
