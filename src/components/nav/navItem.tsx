@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import {
 	ListItem,
@@ -7,17 +8,25 @@ import {
 	ListItemText,
 } from '@mui/material';
 
-import { NavContext } from '../../contexts/nav';
+const linkStyle = { width: '100%', textDecoration: 'none', color: '#757575' };
+const activeLinkStyle = {
+	width: '100%',
+	textDecoration: 'none',
+	color: '#1976d2',
+};
 
 export default function NavItem({ navItemName, navItemIcon }) {
-	const nav = React.useContext(NavContext);
-
 	return (
 		<ListItem disablePadding>
-			<ListItemButton onClick={() => nav({ type: navItemName })}>
-				<ListItemIcon>{navItemIcon}</ListItemIcon>
-				<ListItemText primary={navItemName} />
-			</ListItemButton>
+			<NavLink
+				to={`/DriversWorkPlan/${navItemName}`}
+				style={({ isActive }) => (isActive ? activeLinkStyle : linkStyle)}
+			>
+				<ListItemButton>
+					<ListItemIcon>{navItemIcon} </ListItemIcon>
+					<ListItemText primary={navItemName} />
+				</ListItemButton>
+			</NavLink>
 		</ListItem>
 	);
 }

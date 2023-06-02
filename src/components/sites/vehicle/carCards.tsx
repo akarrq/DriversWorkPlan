@@ -13,7 +13,7 @@ import {
 import EditIcon from '@mui/icons-material/Edit';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 
-import { ICar } from '../../../models';
+import { ICar } from '../../../interface/models';
 import EditCar from './editCar';
 
 const CarCards = ({ cars }) => {

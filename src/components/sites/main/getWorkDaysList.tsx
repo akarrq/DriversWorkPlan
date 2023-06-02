@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 
-import supabase from '../../../supabaseClient';
-import { IDay } from '../../../models';
+import supabase from '../../../helpers/supabaseClient';
+import { IDay } from '../../../interface/models';
 import WorkDaysList from './workDayList';
 
 const GetWorkDaysList = () => {

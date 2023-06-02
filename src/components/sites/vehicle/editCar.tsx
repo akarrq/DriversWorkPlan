@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import * as React from 'react';
 
-import supabase from '../../../supabaseClient';
+import supabase from '../../../helpers/supabaseClient';
 
 export default function EditCar({
 	vehicleRegistrationNumber,

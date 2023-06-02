@@ -3,7 +3,6 @@ import * as React from 'react';
 import { Typography, Grid, Paper } from '@mui/material';
 
 import GetCars from './getCars';
-import EditCar from './editCar';
 
 export default function Vehicle() {
 	return (

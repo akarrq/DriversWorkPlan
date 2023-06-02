@@ -10,31 +10,42 @@ import {
 	Chip,
 } from '@mui/material';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
-import { IDay } from '../../../models';
+import { IDay } from '../../../interface/models';
+
+const shortDayName = (day: IDay) =>
+	new Intl.DateTimeFormat('pl-PL', { weekday: 'long' })
+		.format(new Date(day.date))
+		.toUpperCase()
+		.substring(0, 2);
+
+const dayAndDate = (day: IDay) =>
+	`${new Intl.DateTimeFormat('pl-PL', {
+		weekday: 'long',
+	}).format(new Date(day.date))} ${new Date(day.date).toLocaleDateString(
+		'pl-PL'
+	)}`;
+
+const chipExtraPaid = (day: IDay) =>
+	day.isExtraPaid ? (
+		<Chip icon={<MonetizationOnIcon />} label="Płatna extra" />
+	) : (
+		false
+	);
 
 export default function WorkDaysList({ days }) {
 	return (
 		<List sx={{ width: '95%', minWidth: 360, bgcolor: 'background.paper' }}>
 			{days.map((day: IDay) => (
-				<>
+				<div key={day.id}>
 					<ListItem key={day.id} alignItems="flex-start">
-						<ListItemAvatar>
-							<Avatar>
-								{new Intl.DateTimeFormat('pl-PL', { weekday: 'long' })
-									.format(new Date(day.date))
-									.toUpperCase()
-									.substring(0, 2)}
-							</Avatar>
+						<ListItemAvatar key={day.id + 'a'}>
+							<Avatar>{shortDayName(day)}</Avatar>
 						</ListItemAvatar>
 						<ListItemText
-							key={day.id}
-							primary={`${new Intl.DateTimeFormat('pl-PL', {
-								weekday: 'long',
-							}).format(new Date(day.date))} ${new Date(
-								day.date
-							).toLocaleDateString('pl-PL')}`}
+							key={day.id + 't'}
+							primary={dayAndDate(day)}
 							secondary={
-								<React.Fragment>
+								<>
 									<Typography
 										sx={{ display: 'inline' }}
 										component="span"
@@ -45,17 +56,13 @@ export default function WorkDaysList({ days }) {
 										${day.workTimeEnd.substring(0, 5)}`}
 									</Typography>
 									{` — ${day.workplace}`}
-								</React.Fragment>
+								</>
 							}
 						/>
-						{day.isExtraPaid ? (
-							<Chip icon={<MonetizationOnIcon />} label="Płatna extra" />
-						) : (
-							false
-						)}
+						{chipExtraPaid(day)}
 					</ListItem>
 					<Divider key={day.id + 'd'} variant="inset" component="li" />
-				</>
+				</div>
 			))}
 		</List>
 	);
