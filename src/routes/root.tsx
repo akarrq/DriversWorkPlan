@@ -10,10 +10,17 @@ function App() {
 	return (
 		<>
 			<PrimaryAppBar />
-			<Grid container>
-				<Grid item xs={12} sm={10}>
-					<Outlet />
-				</Grid>
+			<Grid
+				container
+				spacing={{ xs: 1, md: 3 }}
+				justifyContent="center"
+				sx={{
+					height: [null, '90vh'],
+					alignItems: ['flex-start', 'center'],
+					justifyContent: ['flex-start', 'center'],
+				}}
+			>
+				<Outlet />
 			</Grid>
 			<BottomNavList />
 		</>

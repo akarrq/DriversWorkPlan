@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './routes/root';
-import Main from './components/sites/main/main';
-import Availability from './components/sites/availability/availability';
-import Vehicle from './components/sites/vehicle/vehicle';
-import Incidents from './components/sites/incidents/incidents';
+import Main from './components/pages/main';
+import Availability from './components/pages/availability';
+import Vehicle from './components/pages/vehicle';
+import Incidents from './components/pages/incidents';
 import ErrorPage from './routes/error-page';
 import './index.css';
 
