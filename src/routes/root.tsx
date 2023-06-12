@@ -3,19 +3,19 @@ import { Outlet } from 'react-router-dom';
 
 import { Grid } from '@mui/material';
 
-import PrimaryAppBar from '../components/nav/appBar';
-import NavList from '../components/nav/nav';
+import PrimaryAppBar from '../components/appBar';
+import BottomNavList from '../components/nav';
 
 function App() {
 	return (
 		<>
 			<PrimaryAppBar />
 			<Grid container>
-				<NavList />
-				<Grid item xs={10}>
+				<Grid item xs={12} sm={10}>
 					<Outlet />
 				</Grid>
 			</Grid>
+			<BottomNavList />
 		</>
 	);
 }
