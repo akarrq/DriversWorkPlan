@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { Typography, Grid, Paper } from '@mui/material';
-import GetCars from '../vehicle/getCars';
 
 export default function Incidents() {
 	return (
@@ -21,9 +20,7 @@ export default function Incidents() {
 				</Typography>
 			</Grid>
 			<Grid item xs={12} sm={7}>
-				<Paper>
-					<GetCars />
-				</Paper>
+				<Paper></Paper>
 			</Grid>
 		</>
 	);

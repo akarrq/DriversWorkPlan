@@ -1,7 +1,9 @@
+import React, { useState, useMemo } from 'react';
+import { Form, redirect, useLocation } from 'react-router-dom';
+
 import {
 	CardContent,
 	Typography,
-	CardActions,
 	Button,
 	FormControl,
 	FormHelperText,
@@ -9,26 +11,43 @@ import {
 	Box,
 	OutlinedInput,
 } from '@mui/material';
-import * as React from 'react';
 
 import supabase from '../../../helpers/supabaseClient';
 
-export default function EditCar({
-	vehicleRegistrationNumber,
-	vehicleBrand,
-	setIsCarEdit,
-}: {
-	vehicleRegistrationNumber: string;
-	vehicleBrand: string;
-	setIsCarEdit: Function;
-}) {
-	const [vehicleMileage, setVehicleMileage] = React.useState<string | number>();
+export const addCarMileageAction = async ({ params, request }) => {
+	let formData = await request.formData();
+	let intent = formData.get('intent');
+
+	const submission = {
+		vehicleRegistrationNumber: params.id,
+		vehicleMileage: formData.get('vehicleMileage'),
+	};
+
+	if (intent === 'send') {
+		try {
+			const { error } = await supabase
+				.from('vehicleMileage')
+				.insert([submission]);
+			if (error) {
+				throw error;
+			} else alert('Task successfully added');
+		} catch (error: any) {
+			alert(error.message);
+		}
+		redirect('/DriversWorkPlan/Pojazd/');
+	}
+
+	return redirect('/DriversWorkPlan/Pojazd/');
+};
+
+export default function EditCar() {
+	let { state } = useLocation();
+	const [vehicleMileage, setVehicleMileage] = useState<string | number>();
 
 	function HelperText() {
 		const { focused } = useFormControl() || {};
 
-		const helperText = React.useMemo(() => {
-			console.log(vehicleMileage);
+		const helperText = useMemo(() => {
 			if ((focused && vehicleMileage == '') || undefined) {
 				return 'Wpisz przebieg';
 			} else if (focused && Number.isNaN(Number(vehicleMileage))) {
@@ -44,42 +63,6 @@ export default function EditCar({
 		return <FormHelperText>{helperText}</FormHelperText>;
 	}
 
-	function handleSubmit(
-		e: React.FormEvent,
-		vehicleRegistrationNumber: string,
-		vehicleMileage: number | string
-	) {
-		let vehicleMileageNumber = Number(vehicleMileage);
-		if (Number.isNaN(vehicleMileageNumber)) {
-			alert('Przebieg musi być liczbą');
-			return;
-		}
-
-		e.preventDefault();
-		saveVehicleMileage(vehicleRegistrationNumber, vehicleMileageNumber);
-	}
-
-	async function saveVehicleMileage(
-		vehicleRegistrationNumber: string,
-		vehicleMileage: number
-	) {
-		try {
-			const { error } = await supabase.from('vehicleMileage').insert([
-				{
-					vehicleRegistrationNumber: vehicleRegistrationNumber,
-					vehicleMileage: vehicleMileage,
-				},
-			]);
-			if (error) {
-				throw error;
-			}
-			alert('Task successfully added');
-			setVehicleMileage('');
-		} catch (error: any) {
-			alert(error.message);
-		}
-	}
-
 	return (
 		<>
 			<CardContent>
@@ -87,15 +70,15 @@ export default function EditCar({
 					Wpisz aktualny przebieg pojazdu
 				</Typography>
 				<Typography variant="h5" component="div">
-					{vehicleRegistrationNumber}
+					{state.vehicleRegistrationNumber}
 				</Typography>
 				<Typography sx={{ mb: 1.5 }} color="text.secondary">
-					{vehicleBrand}
+					{state.vehicleBrand}
 				</Typography>
-				<Box component="form" noValidate autoComplete="off">
+				<Box component={Form} method="post" noValidate autoComplete="off">
 					<FormControl>
 						<OutlinedInput
-							id="vehicleMileage"
+							name="vehicleMileage"
 							placeholder="Przebieg"
 							inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
 							value={vehicleMileage}
@@ -108,27 +91,21 @@ export default function EditCar({
 							}}
 						/>
 						<HelperText />
+						<Button size="small" variant="outlined" type="submit">
+							Anuluj
+						</Button>
+						<Button
+							size="small"
+							variant="contained"
+							type="submit"
+							name="intent"
+							value="send"
+						>
+							Zatwierdź
+						</Button>
 					</FormControl>
 				</Box>
 			</CardContent>
-			<CardActions>
-				<Button
-					size="small"
-					variant="outlined"
-					onClick={() => setIsCarEdit(false)}
-				>
-					Anuluj
-				</Button>
-				<Button
-					size="small"
-					variant="contained"
-					onClick={(e) =>
-						handleSubmit(e, vehicleRegistrationNumber, vehicleMileage!)
-					}
-				>
-					Zatwierdź
-				</Button>
-			</CardActions>
 		</>
 	);
 }

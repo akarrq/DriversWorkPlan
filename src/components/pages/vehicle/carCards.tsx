@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 
 import {
 	ListItem,
@@ -7,64 +8,47 @@ import {
 	List,
 	ListItemAvatar,
 	Avatar,
-	Divider,
 	Tooltip,
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 
 import { ICar } from '../../../interface/models';
-import EditCar from './editCar';
 
-const CarCards = ({ cars }) => {
-	const [isCarEdit, setIsCarEdit] = React.useState(false);
-	const [vehicleRegistrationNumber, setVehicleRegistrationNumber] =
-		React.useState<string>('');
-	const [vehicleBrand, setVehicleBrand] = React.useState<string>('');
+const CarCards = () => {
+	const cars: ICar[] = useLoaderData();
 
-	return isCarEdit ? (
-		<EditCar
-			vehicleRegistrationNumber={vehicleRegistrationNumber}
-			vehicleBrand={vehicleBrand}
-			setIsCarEdit={setIsCarEdit}
-		/>
-	) : (
+	return (
 		<List>
 			{cars.map((car: ICar) => (
-				<>
-					<ListItem
-						key={car.id}
-						secondaryAction={
+				<ListItem
+					key={car.id}
+					secondaryAction={
+						<Link
+							to={`${car.vehicleRegistrationNumber}`}
+							state={{
+								vehicleBrand: car.vehicleBrand,
+								vehicleRegistrationNumber: car.vehicleRegistrationNumber,
+							}}
+						>
 							<Tooltip title="Wpisz przebieg">
-								<IconButton
-									onClick={() => {
-										setVehicleRegistrationNumber(
-											car.vehicleRegistrationNumber!
-										);
-										setVehicleBrand(car.vehicleBrand!);
-										setIsCarEdit(true);
-										console.log(car.vehicleRegistrationNumber);
-									}}
-									edge="end"
-									aria-label="delete"
-								>
+								<IconButton edge="end" aria-label="delete">
 									<EditIcon />
 								</IconButton>
 							</Tooltip>
-						}
-					>
-						<ListItemAvatar>
-							<Avatar>
-								<DirectionsCarIcon />
-							</Avatar>
-						</ListItemAvatar>
-						<ListItemText
-							primary={car.vehicleRegistrationNumber}
-							secondary={car.vehicleBrand}
-						></ListItemText>
-					</ListItem>
-					<Divider key={car.id + 'd'} variant="inset" component="li" />
-				</>
+						</Link>
+					}
+				>
+					<ListItemAvatar>
+						<Avatar>
+							<DirectionsCarIcon />
+						</Avatar>
+					</ListItemAvatar>
+					<ListItemText
+						primary={car.vehicleRegistrationNumber}
+						secondary={car.vehicleBrand}
+					></ListItemText>
+				</ListItem>
 			))}
 		</List>
 	);
