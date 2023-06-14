@@ -34,12 +34,6 @@ export default function Vehicle() {
 				>
 					Pojazd
 				</Typography>
-				<Typography
-					variant="h5"
-					sx={{ margin: 2, fontSize: { xs: 20, sm: 24 } }}
-				>
-					Zarejestruj stan licznika
-				</Typography>
 			</Grid>
 			<Grid item xs={12} sm={7}>
 				<Paper>

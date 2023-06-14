@@ -44,6 +44,10 @@ const CarsList = () => {
 					<ListItemButton
 						component={Link}
 						to={`/DriversWorkPlan/Pojazd/${car.vehicleRegistrationNumber}`}
+						state={{
+							vehicleBrand: car.vehicleBrand,
+							vehicleRegistrationNumber: car.vehicleRegistrationNumber,
+						}}
 					>
 						<ListItemAvatar>
 							<Avatar>

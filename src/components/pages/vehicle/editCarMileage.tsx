@@ -41,7 +41,7 @@ export const addCarMileageAction = async ({ params, request }) => {
 };
 
 export default function EditCarMileage() {
-	let { state } = useLocation();
+	let { state: car } = useLocation();
 	const [vehicleMileage, setVehicleMileage] = useState<string | number>();
 
 	function HelperText() {
@@ -69,10 +69,10 @@ export default function EditCarMileage() {
 				Wpisz aktualny przebieg pojazdu
 			</Typography>
 			<Typography variant="h5" component="div">
-				{state.vehicleRegistrationNumber}
+				{car.vehicleRegistrationNumber}
 			</Typography>
 			<Typography sx={{ mb: 1.5 }} color="text.secondary">
-				{state.vehicleBrand}
+				{car.vehicleBrand}
 			</Typography>
 			<Box component={Form} method="post" noValidate autoComplete="off">
 				<FormControl>

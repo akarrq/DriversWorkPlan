@@ -41,7 +41,6 @@ const router = createBrowserRouter([
 					},
 					{
 						path: ':id',
-						action: addCarMileageAction,
 						element: <CarCard />,
 					},
 					{
