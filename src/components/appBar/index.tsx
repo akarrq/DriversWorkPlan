@@ -118,7 +118,7 @@ export default function PrimaryAppBar() {
 						variant="h6"
 						noWrap
 						component="div"
-						sx={{ display: { xs: 'none', sm: 'block' } }}
+						sx={{ display: 'block' }}
 					>
 						Drivers Work Plan
 					</Typography>
