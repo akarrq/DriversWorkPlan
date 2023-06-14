@@ -9,10 +9,11 @@ import Vehicle, { vehiclesLoader } from './components/pages/vehicle';
 import Incidents from './components/pages/incidents';
 import ErrorPage from './routes/error-page';
 import './index.css';
-import EditCar, {
+import EditCarMileage, {
 	addCarMileageAction,
-} from './components/pages/vehicle/editCar';
-import CarCards from './components/pages/vehicle/carCards';
+} from './components/pages/vehicle/editCarMileage';
+import CarsList from './components/pages/vehicle/carsList';
+import CarCard from './components/pages/vehicle/carCard';
 
 const router = createBrowserRouter([
 	{
@@ -32,17 +33,21 @@ const router = createBrowserRouter([
 			{
 				path: '/DriversWorkPlan/Pojazd',
 				element: <Vehicle />,
-
 				children: [
 					{
 						path: '',
 						loader: vehiclesLoader,
-						element: <CarCards />,
+						element: <CarsList />,
 					},
 					{
 						path: ':id',
 						action: addCarMileageAction,
-						element: <EditCar />,
+						element: <CarCard />,
+					},
+					{
+						path: ':id/Przebieg',
+						action: addCarMileageAction,
+						element: <EditCarMileage />,
 					},
 				],
 			},

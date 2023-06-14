@@ -9,49 +9,56 @@ import {
 	ListItemAvatar,
 	Avatar,
 	Tooltip,
+	ListItemButton,
 } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
+import AvTimerIcon from '@mui/icons-material/AvTimer';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 
 import { ICar } from '../../../interface/models';
 
-const CarCards = () => {
-	const cars: ICar[] = useLoaderData();
+const CarsList = () => {
+	const cars = useLoaderData() as ICar[];
 
 	return (
 		<List>
 			{cars.map((car: ICar) => (
 				<ListItem
+					disablePadding
 					key={car.id}
 					secondaryAction={
 						<Link
-							to={`${car.vehicleRegistrationNumber}`}
+							to={`${car.vehicleRegistrationNumber}/Przebieg`}
 							state={{
 								vehicleBrand: car.vehicleBrand,
 								vehicleRegistrationNumber: car.vehicleRegistrationNumber,
 							}}
 						>
 							<Tooltip title="Wpisz przebieg">
-								<IconButton edge="end" aria-label="delete">
-									<EditIcon />
+								<IconButton edge="end" aria-label="edit">
+									<AvTimerIcon />
 								</IconButton>
 							</Tooltip>
 						</Link>
 					}
 				>
-					<ListItemAvatar>
-						<Avatar>
-							<DirectionsCarIcon />
-						</Avatar>
-					</ListItemAvatar>
-					<ListItemText
-						primary={car.vehicleRegistrationNumber}
-						secondary={car.vehicleBrand}
-					></ListItemText>
+					<ListItemButton
+						component={Link}
+						to={`/DriversWorkPlan/Pojazd/${car.vehicleRegistrationNumber}`}
+					>
+						<ListItemAvatar>
+							<Avatar>
+								<DirectionsCarIcon />
+							</Avatar>
+						</ListItemAvatar>
+						<ListItemText
+							primary={car.vehicleRegistrationNumber}
+							secondary={car.vehicleBrand}
+						></ListItemText>
+					</ListItemButton>
 				</ListItem>
 			))}
 		</List>
 	);
 };
 
-export default CarCards;
+export default CarsList;

@@ -40,7 +40,7 @@ export const addCarMileageAction = async ({ params, request }) => {
 	return redirect('/DriversWorkPlan/Pojazd/');
 };
 
-export default function EditCar() {
+export default function EditCarMileage() {
 	let { state } = useLocation();
 	const [vehicleMileage, setVehicleMileage] = useState<string | number>();
 
@@ -64,48 +64,46 @@ export default function EditCar() {
 	}
 
 	return (
-		<>
-			<CardContent>
-				<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-					Wpisz aktualny przebieg pojazdu
-				</Typography>
-				<Typography variant="h5" component="div">
-					{state.vehicleRegistrationNumber}
-				</Typography>
-				<Typography sx={{ mb: 1.5 }} color="text.secondary">
-					{state.vehicleBrand}
-				</Typography>
-				<Box component={Form} method="post" noValidate autoComplete="off">
-					<FormControl>
-						<OutlinedInput
-							name="vehicleMileage"
-							placeholder="Przebieg"
-							inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-							value={vehicleMileage}
-							onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-								setVehicleMileage(
-									Number(event.target.value)
-										? Number(event.target.value)
-										: event.target.value
-								);
-							}}
-						/>
-						<HelperText />
-						<Button size="small" variant="outlined" type="submit">
-							Anuluj
-						</Button>
-						<Button
-							size="small"
-							variant="contained"
-							type="submit"
-							name="intent"
-							value="send"
-						>
-							Zatwierdź
-						</Button>
-					</FormControl>
-				</Box>
-			</CardContent>
-		</>
+		<CardContent>
+			<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+				Wpisz aktualny przebieg pojazdu
+			</Typography>
+			<Typography variant="h5" component="div">
+				{state.vehicleRegistrationNumber}
+			</Typography>
+			<Typography sx={{ mb: 1.5 }} color="text.secondary">
+				{state.vehicleBrand}
+			</Typography>
+			<Box component={Form} method="post" noValidate autoComplete="off">
+				<FormControl>
+					<OutlinedInput
+						name="vehicleMileage"
+						placeholder="Przebieg"
+						inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+						value={vehicleMileage}
+						onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+							setVehicleMileage(
+								Number(event.target.value)
+									? Number(event.target.value)
+									: event.target.value
+							);
+						}}
+					/>
+					<HelperText />
+					<Button size="small" variant="outlined" type="submit">
+						Anuluj
+					</Button>
+					<Button
+						size="small"
+						variant="contained"
+						type="submit"
+						name="intent"
+						value="send"
+					>
+						Zatwierdź
+					</Button>
+				</FormControl>
+			</Box>
+		</CardContent>
 	);
 }
