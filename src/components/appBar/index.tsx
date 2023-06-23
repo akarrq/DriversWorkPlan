@@ -111,19 +111,43 @@ export default function PrimaryAppBar() {
 	);
 
 	return (
-		<Box sx={{ flexGrow: 1 }}>
-			<AppBar position="static">
+		<Box
+			sx={{
+				flexGrow: 1,
+				margin: { md: '20px' },
+				marginLeft: { md: '140px' },
+			}}
+		>
+			<AppBar
+				position="static"
+				sx={{
+					backgroundColor: { md: 'transparent' },
+					boxShadow: { md: 'none' },
+				}}
+			>
 				<Toolbar>
 					<Typography
-						variant="h6"
+						variant="h5"
 						noWrap
-						component="div"
-						sx={{ display: 'block' }}
+						component="p"
+						sx={{
+							display: 'block',
+							color: { md: 'black' },
+						}}
 					>
 						Drivers Work Plan
 					</Typography>
 					<Box sx={{ flexGrow: 1 }} />
-					<Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+					<Box
+						sx={{
+							display: { xs: 'none', md: 'flex' },
+							backgroundColor: { md: '#2196f3' },
+							padding: { md: '5px' },
+							borderRadius: { md: 5 },
+							boxShadow:
+								'0px 2px 4px -1px #0003, 0px 4px 5px 0px #00000024, 0px 1px 10px 0px #0000001f',
+						}}
+					>
 						<IconButton
 							size="large"
 							aria-label="show 4 new mails"
@@ -144,7 +168,6 @@ export default function PrimaryAppBar() {
 						</IconButton>
 						<IconButton
 							size="large"
-							edge="end"
 							aria-label="account of current user"
 							aria-controls={menuId}
 							aria-haspopup="true"

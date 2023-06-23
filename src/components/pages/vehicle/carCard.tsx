@@ -28,8 +28,10 @@ export default function CarCard() {
 			/>
 			<CardContent>
 				<Typography variant="body2" color="text.secondary">
-					Lizards are a widespread group of squamate reptiles, with over 6,000
-					species, ranging across all continents except Antarctica
+					Tu będą wykresiki i zarejestrowane zdarzenia! Lorem ipsum dolor sit
+					amet consectetur adipisicing elit. Eligendi consequuntur totam numquam
+					saepe suscipit rerum. Labore facilis adipisci, voluptatum provident,
+					fugiat nulla ab veniam cum eos suscipit rerum impedit corrupti!
 				</Typography>
 			</CardContent>
 			<CardActions>
@@ -52,6 +54,15 @@ export default function CarCard() {
 					}}
 				>
 					Wpisz przebieg
+				</Button>
+				<Button
+					size="small"
+					variant="contained"
+					component={Link}
+					to={`/DriversWorkPlan/Pojazd/${car.vehicleRegistrationNumber}/Zdarzenie`}
+					state={car}
+				>
+					Dodaj zdarzenie
 				</Button>
 			</CardActions>
 		</Card>

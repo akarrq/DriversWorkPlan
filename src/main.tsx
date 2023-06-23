@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './routes/root';
-import Main, { workDaysLoader } from './components/pages/main';
+import Dashboard, { workDaysLoader } from './components/pages/dashboard';
 import Availability from './components/pages/availability';
 import Vehicle, { vehiclesLoader } from './components/pages/vehicle';
 import Incidents from './components/pages/incidents';
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: '/DriversWorkPlan/Dashboard',
-				element: <Main />,
+				element: <Dashboard />,
 				loader: workDaysLoader,
 			},
 			{

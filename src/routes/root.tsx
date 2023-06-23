@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { Grid } from '@mui/material';
 
 import PrimaryAppBar from '../components/appBar';
-import BottomNavList from '../components/nav';
+import MainNavList from '../components/nav';
 
 function App() {
 	return (
@@ -15,6 +15,7 @@ function App() {
 				spacing={{ xs: 1, md: 3 }}
 				justifyContent="center"
 				sx={{
+					paddingLeft: [null, '140px'],
 					height: [null, '90vh'],
 					alignItems: ['flex-start', 'center'],
 					justifyContent: ['flex-start', 'center'],
@@ -22,7 +23,7 @@ function App() {
 			>
 				<Outlet />
 			</Grid>
-			<BottomNavList />
+			<MainNavList />
 		</>
 	);
 }
