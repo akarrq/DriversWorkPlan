@@ -2,13 +2,16 @@ import * as React from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { Grid } from '@mui/material';
+import { SnackbarProvider } from 'notistack';
 
 import PrimaryAppBar from '../components/appBar';
 import MainNavList from '../components/nav';
 
 function App() {
 	return (
-		<>
+		<SnackbarProvider
+			anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
+		>
 			<PrimaryAppBar />
 			<Grid
 				container
@@ -24,7 +27,7 @@ function App() {
 				<Outlet />
 			</Grid>
 			<MainNavList />
-		</>
+		</SnackbarProvider>
 	);
 }
 

@@ -15,3 +15,8 @@ export interface ICar {
 	vehicleBrand: string | null;
 	vehicleRegistrationNumber: string | null;
 }
+
+export interface INotification {
+	message: string;
+	variant: 'info' | 'default' | 'error' | 'success' | 'warning' | undefined;
+}
