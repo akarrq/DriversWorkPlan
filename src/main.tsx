@@ -14,6 +14,9 @@ import EditCarMileage, {
 } from './components/pages/vehicle/editCarMileage';
 import CarsList from './components/pages/vehicle/carsList';
 import CarCard from './components/pages/vehicle/carCard';
+import EditCarIncident, {
+	addCarIncidentAction,
+} from './components/pages/vehicle/editCarIncident';
 
 const router = createBrowserRouter([
 	{
@@ -47,6 +50,11 @@ const router = createBrowserRouter([
 						path: ':id/Przebieg',
 						action: addCarMileageAction,
 						element: <EditCarMileage />,
+					},
+					{
+						path: ':id/Zdarzenie',
+						action: addCarIncidentAction,
+						element: <EditCarIncident />,
 					},
 				],
 			},
