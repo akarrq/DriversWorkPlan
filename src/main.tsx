@@ -2,13 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+import './index.css';
 import App from './routes/root';
+import ErrorPage from './routes/error-page';
 import Dashboard from './components/pages/dashboard';
 import Availability from './components/pages/availability';
 import Vehicle from './components/pages/vehicle';
-import Incidents from './components/pages/incidents';
-import ErrorPage from './routes/error-page';
-import './index.css';
 import EditCarMileage, {
 	addCarMileageAction,
 } from './components/pages/vehicle/editCarMileage';
@@ -55,10 +54,6 @@ const router = createBrowserRouter([
 						element: <EditCarIncident />,
 					},
 				],
-			},
-			{
-				path: '/DriversWorkPlan/Zdarzenia',
-				element: <Incidents />,
 			},
 		],
 	},
