@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './routes/root';
-import Dashboard, { workDaysLoader } from './components/pages/dashboard';
+import Dashboard from './components/pages/dashboard';
 import Availability from './components/pages/availability';
-import Vehicle, { vehiclesLoader } from './components/pages/vehicle';
+import Vehicle from './components/pages/vehicle';
 import Incidents from './components/pages/incidents';
 import ErrorPage from './routes/error-page';
 import './index.css';
@@ -27,7 +27,6 @@ const router = createBrowserRouter([
 			{
 				path: '/DriversWorkPlan/Dashboard',
 				element: <Dashboard />,
-				loader: workDaysLoader,
 			},
 			{
 				path: '/DriversWorkPlan/Dostępność',
@@ -39,7 +38,6 @@ const router = createBrowserRouter([
 				children: [
 					{
 						path: '',
-						loader: vehiclesLoader,
 						element: <CarsList />,
 					},
 					{

@@ -3,27 +3,6 @@ import { Outlet } from 'react-router-dom';
 
 import { Typography, Grid, Paper } from '@mui/material';
 
-import supabase from '../../../helpers/supabaseClient';
-
-export const vehiclesLoader = async () => {
-	try {
-		let { data, status, error } = await supabase.from('cars').select('*');
-		if (error && status !== 406) {
-			return [
-				{
-					vehicleBrand: 'Oops',
-					vehicleRegistrationNumber: 'Something went wrong',
-				},
-			];
-		}
-		if (data) {
-			return data;
-		}
-	} catch (error: any) {
-		throw error;
-	}
-};
-
 export default function Vehicle() {
 	return (
 		<>

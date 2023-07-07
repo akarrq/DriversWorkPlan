@@ -5,12 +5,14 @@ import {
 	ListItemText,
 	ListItemAvatar,
 	Avatar,
-	Divider,
 	Typography,
 	Chip,
 } from '@mui/material';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+
 import { IDay } from '../../../interface/models';
+import useGetData from '../../../utils/useGetData';
+import { ListSkeleton } from '../vehicle/carsList';
 
 const shortDayName = (day: IDay) =>
 	new Intl.DateTimeFormat('pl-PL', { weekday: 'long' })
@@ -32,38 +34,37 @@ const chipExtraPaid = (day: IDay) =>
 		false
 	);
 
-export default function WorkDaysList({ days }) {
-	return (
-		<List sx={{ width: '95%', minWidth: 360, bgcolor: 'background.paper' }}>
-			{days.map((day: IDay) => (
-				<div key={day.id}>
-					<ListItem key={day.id} alignItems="flex-start">
-						<ListItemAvatar key={day.id + 'a'}>
-							<Avatar>{shortDayName(day)}</Avatar>
-						</ListItemAvatar>
-						<ListItemText
-							key={day.id + 't'}
-							primary={dayAndDate(day)}
-							secondary={
-								<>
-									<Typography
-										sx={{ display: 'inline' }}
-										component="span"
-										variant="body2"
-										color="text.primary"
-									>
-										{`${day.workTimeStart.substring(0, 5)} -
+const ListItems = ({ days }) =>
+	days.map((day: IDay) => (
+		<ListItem key={day.id}>
+			<ListItemAvatar>
+				<Avatar>{shortDayName(day)}</Avatar>
+			</ListItemAvatar>
+			<ListItemText
+				primary={dayAndDate(day)}
+				secondary={
+					<>
+						<Typography component="span" variant="body2" color="text.primary">
+							{`${day.workTimeStart.substring(0, 5)} -
 										${day.workTimeEnd.substring(0, 5)}`}
-									</Typography>
-									{` — ${day.workplace}`}
-								</>
-							}
-						/>
-						{chipExtraPaid(day)}
-					</ListItem>
-					<Divider key={day.id + 'd'} variant="inset" component="li" />
-				</div>
-			))}
+						</Typography>
+						{` — ${day.workplace}`}
+					</>
+				}
+			/>
+			{chipExtraPaid(day)}
+		</ListItem>
+	));
+
+export default function WorkDaysList() {
+	const [days, loadingDays] = useGetData({
+		tableName: 'dwp',
+		columns: '*',
+	});
+
+	return (
+		<List>
+			{loadingDays ? <ListSkeleton items={3} /> : <ListItems days={days} />}
 		</List>
 	);
 }

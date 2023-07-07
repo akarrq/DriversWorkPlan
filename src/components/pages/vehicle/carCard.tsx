@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import {
 	Avatar,
@@ -12,9 +12,11 @@ import {
 } from '@mui/material';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 
+import CarData from './carData';
+
 export default function CarCard() {
 	let { state: car } = useLocation();
-	const navigate = useNavigate();
+
 	return (
 		<Card>
 			<CardHeader
@@ -27,12 +29,10 @@ export default function CarCard() {
 				subheader={car.vehicleBrand}
 			/>
 			<CardContent>
-				<Typography variant="body2" color="text.secondary">
-					Tu będą wykresiki i zarejestrowane zdarzenia! Lorem ipsum dolor sit
-					amet consectetur adipisicing elit. Eligendi consequuntur totam numquam
-					saepe suscipit rerum. Labore facilis adipisci, voluptatum provident,
-					fugiat nulla ab veniam cum eos suscipit rerum impedit corrupti!
+				<Typography variant="h6" color="text.primary" padding={1}>
+					Przeglądaj dane pojazdu.
 				</Typography>
+				<CarData vehicleRegistrationNumber={car.vehicleRegistrationNumber} />
 			</CardContent>
 			<CardActions>
 				<Button
