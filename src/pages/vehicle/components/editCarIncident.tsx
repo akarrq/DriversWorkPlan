@@ -13,30 +13,15 @@ import {
 	Button,
 	FormControl,
 	Box,
-	OutlinedInput,
 	TextField,
 	MenuItem,
 } from '@mui/material';
 
-import supabase from '../../../helpers/supabaseClient';
+import supabase from '../../../shared/helpers/supabaseClient';
 
-import useNotification from '../../../utils/useNotification';
-import { ICar, INotification } from '../../../interface/models';
-
-const incidentTypes = [
-	{
-		value: 'nieporządek',
-		label: 'nieporządek',
-	},
-	{
-		value: 'zderzenie',
-		label: 'zderzenie',
-	},
-	{
-		value: 'uszkodzenie pojazdu',
-		label: 'uszkodzenie pojazdu',
-	},
-];
+import useNotification from '../../../shared/utils/useNotification';
+import { ICar, INotification } from '../../../shared/interface/models';
+import incidentTypes from '../consts/incidentTypes';
 
 export const addCarIncidentAction = async ({ params, request }) => {
 	let formData = await request.formData();

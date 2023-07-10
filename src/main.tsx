@@ -3,19 +3,19 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './index.css';
-import App from './routes/root';
-import ErrorPage from './routes/error-page';
-import Dashboard from './components/pages/dashboard';
-import Availability from './components/pages/availability';
-import Vehicle from './components/pages/vehicle';
+import App from './shared/routes/root';
+import ErrorPage from './shared/routes/error-page';
+import Dashboard from './pages/dashboard';
+import Availability from './pages/availability';
+import Vehicle from './pages/vehicle';
 import EditCarMileage, {
 	addCarMileageAction,
-} from './components/pages/vehicle/editCarMileage';
-import CarsList from './components/pages/vehicle/carsList';
-import CarCard from './components/pages/vehicle/carCard';
+} from './pages/vehicle/components/editCarMileage';
+import CarsList from './pages/vehicle/components/carsList';
+import CarCard from './pages/vehicle/components/carCard';
 import EditCarIncident, {
 	addCarIncidentAction,
-} from './components/pages/vehicle/editCarIncident';
+} from './pages/vehicle/components/editCarIncident';
 
 const router = createBrowserRouter([
 	{

@@ -2,7 +2,7 @@ import React, { useState, Fragment, useEffect } from 'react';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { useSnackbar } from 'notistack';
-import { INotification } from '../interface/models';
+import type { INotification } from '../interface/models';
 
 export default function useNotification() {
 	const [conf, setConf] = useState<INotification>();

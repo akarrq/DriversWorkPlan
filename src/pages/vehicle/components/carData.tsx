@@ -12,9 +12,9 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-
-import useGetData from '../../../utils/useGetData';
 import { Skeleton } from '@mui/material';
+
+import useGetData from '../../../shared/utils/useGetData';
 
 function Row({ name, data }) {
 	const [open, setOpen] = useState(false);

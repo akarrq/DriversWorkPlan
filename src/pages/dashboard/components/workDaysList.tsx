@@ -10,9 +10,9 @@ import {
 } from '@mui/material';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
-import { IDay } from '../../../interface/models';
-import useGetData from '../../../utils/useGetData';
-import { ListSkeleton } from '../vehicle/carsList';
+import { IDay } from '../../../shared/interface/models';
+import useGetData from '../../../shared/utils/useGetData';
+import ListSkeleton from '../../../shared/components/ListSkeleton';
 
 const shortDayName = (day: IDay) =>
 	new Intl.DateTimeFormat('pl-PL', { weekday: 'long' })

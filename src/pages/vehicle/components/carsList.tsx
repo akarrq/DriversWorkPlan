@@ -10,13 +10,13 @@ import {
 	Avatar,
 	Tooltip,
 	ListItemButton,
-	Skeleton,
 } from '@mui/material';
 import AvTimerIcon from '@mui/icons-material/AvTimer';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 
-import { ICar } from '../../../interface/models';
-import useGetData from '../../../utils/useGetData';
+import { ICar } from '../../../shared/interface/models';
+import useGetData from '../../../shared/utils/useGetData';
+import ListSkeleton from '../../../shared/components/ListSkeleton';
 
 const CarsList = () => {
 	const [cars, loading] = useGetData({
@@ -28,29 +28,6 @@ const CarsList = () => {
 		<List>
 			{loading ? <ListSkeleton items={4} /> : <ListItems cars={cars} />}
 		</List>
-	);
-};
-
-export const ListSkeleton = ({ items = 1 }) => {
-	const skeletons = Array(items).fill(null);
-	return (
-		<>
-			{skeletons.map((skeleton, i) => (
-				<ListItem
-					key={i}
-					secondaryAction={
-						<IconButton edge="end">
-							<Skeleton variant="circular" width={30} height={30} />
-						</IconButton>
-					}
-				>
-					<ListItemAvatar>
-						<Skeleton variant="circular" width={40} height={40} />
-					</ListItemAvatar>
-					<ListItemText primary={<Skeleton />} secondary={<Skeleton />} />
-				</ListItem>
-			))}
-		</>
 	);
 };
 

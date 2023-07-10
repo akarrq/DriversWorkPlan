@@ -18,10 +18,10 @@ import {
 	OutlinedInput,
 } from '@mui/material';
 
-import supabase from '../../../helpers/supabaseClient';
+import supabase from '../../../shared/helpers/supabaseClient';
 
-import useNotification from '../../../utils/useNotification';
-import { ICar, INotification } from '../../../interface/models';
+import useNotification from '../../../shared/utils/useNotification';
+import { ICar, INotification } from '../../../shared/interface/models';
 
 export const addCarMileageAction = async ({ params, request }) => {
 	let formData = await request.formData();

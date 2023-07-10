@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Grid, Paper, Typography } from '@mui/material';
 
-import WorkDaysList from './workDaysList';
+import WorkDaysList from './components/workDaysList';
 
 export default function Dashboard() {
 	return (
