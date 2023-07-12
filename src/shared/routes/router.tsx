@@ -22,7 +22,7 @@ const router = createBrowserRouter([
 		errorElement: <ErrorPage />,
 		children: [
 			{
-				path: '/DriversWorkPlan/Dashboard',
+				path: '/DriversWorkPlan/',
 				element: <Dashboard />,
 			},
 			{
