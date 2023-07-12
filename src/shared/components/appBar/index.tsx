@@ -113,9 +113,11 @@ export default function PrimaryAppBar() {
 	return (
 		<Box
 			sx={{
+				boxSizing: 'border-box',
 				flexGrow: 1,
-				margin: { md: '20px' },
-				marginLeft: { md: '140px' },
+				padding: { md: '20px' },
+				paddingLeft: { md: '140px' },
+				height: '10vh',
 			}}
 		>
 			<AppBar

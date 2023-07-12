@@ -12,19 +12,24 @@ function App() {
 		<SnackbarProvider
 			anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
 		>
-			<PrimaryAppBar />
-			<Grid
-				container
-				spacing={{ xs: 1, md: 3 }}
-				justifyContent="center"
-				sx={{
-					paddingLeft: [null, '140px'],
-					height: [null, '90vh'],
-					alignItems: ['flex-start', 'center'],
-					justifyContent: ['flex-start', 'center'],
-				}}
-			>
-				<Outlet />
+			<Grid container sx={{ margin: 0 }}>
+				<Grid item xs={12}>
+					<PrimaryAppBar />
+				</Grid>
+				<Grid
+					container
+					item
+					spacing={{ xs: 0, md: 3 }}
+					justifyContent="center"
+					sx={{
+						height: [null, '90vh'],
+						alignItems: ['flex-start', 'center'],
+						justifyContent: ['flex-start', 'center'],
+					}}
+				>
+					<Grid item xs={0} sm={1} sx={{ display: ['none', 'initial'] }}></Grid>
+					<Outlet />
+				</Grid>
 			</Grid>
 			<MainNavList />
 		</SnackbarProvider>
